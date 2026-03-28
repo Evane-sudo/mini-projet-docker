@@ -30,7 +30,7 @@ mini-projet-docker/
 
 ## Architecture globale (schéma)
 
-```
+```markdown
 
 ```
           Navigateur

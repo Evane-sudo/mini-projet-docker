@@ -7,11 +7,10 @@ Il inclut une API Python, une interface web en PHP ainsi qu’un registry Docker
 
 L’ensemble permet de comprendre les bases du déploiement d’applications conteneurisées et de la gestion d’images Docker.
 
----
+
 
 ## Architecture du projet
 
-```
 
 mini-projet-docker/
 │
@@ -21,23 +20,21 @@ mini-projet-docker/
 ├── docker-compose-registry.yml # Registry Docker privé
 ├── .gitignore
 
-```
 
----
+
+
 
 ## Architecture globale (schéma)
 
-```
 
-```
+
+
             ┌────────────────────┐
             │    Navigateur      │
             └─────────┬──────────┘
                       │
       ┌───────────────┼────────────────┐
       │                                │
-```
-
 [http://localhost:80](http://localhost:80)              [http://localhost:5000](http://localhost:5000)
 │                                │
 ┌────────▼────────┐             ┌─────────▼─────────┐
@@ -58,9 +55,6 @@ Docker Network
 │ Registry UI     │
 └─────────────────┘
 
-````
-
----
 
 ## Services
 
@@ -79,27 +73,27 @@ Docker Network
 
 ```bash
 docker compose up -d
-````
+
 
 Accès :
 
 * Web : [http://localhost:80](http://localhost:80)
 * API : [http://localhost:5000](http://localhost:5000)
 
----
+
 
 ### 2. Lancer le registry Docker
 
 ```bash
 docker compose -f docker-compose-registry.yml up -d
-```
+
 
 Accès :
 
 * Registry : [http://localhost:5000](http://localhost:5000)
 * Interface : [http://localhost:8080](http://localhost:8080)
 
----
+
 
 ## Authentification
 
@@ -114,9 +108,7 @@ Connexion :
 
 ```bash
 docker login http://localhost:5000
-```
 
----
 
 ## Gestion des images Docker
 
@@ -124,15 +116,13 @@ docker login http://localhost:5000
 
 ```bash
 docker tag api:v1.0 localhost:5000/api:v1.0
-```
+
 
 ### Push vers le registry
 
 ```bash
 docker push localhost:5000/api:v1.0
-```
 
----
 
 ## Bonnes pratiques appliquées
 
@@ -144,7 +134,7 @@ docker push localhost:5000/api:v1.0
   * données du registry (`registry-data/`)
   * fichiers sensibles (`auth/htpasswd`)
 
----
+
 
 ## Technologies utilisées
 
@@ -157,7 +147,6 @@ docker push localhost:5000/api:v1.0
 | Registry         | Docker Registry       |
 | Environnement    | Linux / Vagrant       |
 
----
 
 ## Objectifs pédagogiques
 
@@ -169,7 +158,6 @@ Ce projet permet de comprendre :
 * Le fonctionnement d’un registry Docker privé
 * Les bonnes pratiques de gestion de projet DevOps
 
----
 
 ## Auteur
 

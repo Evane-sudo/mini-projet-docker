@@ -1,11 +1,13 @@
 
+---
+
 ```markdown
 # Mini Projet Docker - Infrastructure DevOps
 
 ## Description
 
 Ce projet a pour objectif de mettre en place une infrastructure conteneurisée simple basée sur Docker et Docker Compose.  
-Il inclut une API Python, une interface web en PHP ainsi qu’un registry Docker privé avec authentification.
+Il inclut une API Python, une application web en PHP ainsi qu’un registry Docker privé avec authentification.
 
 L’ensemble permet de comprendre les bases du déploiement d’applications conteneurisées et de la gestion d’images Docker.
 
@@ -16,11 +18,10 @@ L’ensemble permet de comprendre les bases du déploiement d’applications con
 ```
 
 mini-projet-docker/
-│
-├── simple_api/                 # API Python
-├── website/                    # Application web PHP
-├── docker-compose.yml          # Déploiement API + Web
-├── docker-compose-registry.yml # Registry Docker privé
+├── simple_api/                  # API Python
+├── website/                     # Application web PHP
+├── docker-compose.yml           # Déploiement API + Web
+├── docker-compose-registry.yml  # Registry Docker privé
 ├── .gitignore
 
 ```
@@ -32,33 +33,22 @@ mini-projet-docker/
 ```
 
 ```
-            ┌────────────────────┐
-            │    Navigateur      │
-            └─────────┬──────────┘
-                      │
-      ┌───────────────┼────────────────┐
-      │                                │
+          Navigateur
+              |
+    -----------------------
+    |                     |
 ```
 
-[http://localhost:80](http://localhost:80)              [http://localhost:5000](http://localhost:5000)
-│                                │
-┌────────▼────────┐             ┌─────────▼─────────┐
-│   Web (PHP)     │             │    API (Python)   │
-│   Container     │             │    Container      │
-└────────┬────────┘             └─────────┬─────────┘
-│                                │
-└──────────────┬─────────────────┘
-│
-Docker Network
-│
-┌────────▼────────┐
-│ Docker Registry │
-│   (privé)       │
-└────────┬────────┘
-│
-┌────────▼────────┐
-│ Registry UI     │
-└─────────────────┘
+Web (PHP)           API (Python)
+(port 80)           (port 5000)
+|                     |
+-------- Docker Network --------
+|
+Docker Registry
+(privé)
+|
+Registry UI
+(port 8080)
 
 ````
 
@@ -66,12 +56,12 @@ Docker Network
 
 ## Services
 
-| Service            | Image                      | Port hôte | Description                     |
-|--------------------|----------------------------|----------|---------------------------------|
-| API                | api:v1.0                   | 5000     | API Python                      |
-| Web                | php:apache                 | 80       | Interface web                   |
-| Registry           | registry:2                 | 5000     | Registry Docker privé           |
-| Registry UI        | joxit/docker-registry-ui   | 8080     | Interface graphique du registry |
+| Service       | Image                      | Port hôte | Description                   |
+|--------------|---------------------------|----------|-------------------------------|
+| API          | api:v1.0                  | 5000     | API Python                    |
+| Web          | php:apache                | 80       | Application web               |
+| Registry     | registry:2                | 5000     | Registry Docker privé         |
+| Registry UI  | joxit/docker-registry-ui  | 8080     | Interface du registry         |
 
 ---
 
@@ -143,21 +133,21 @@ docker push localhost:5000/api:v1.0
 * Mise en place d’un registry privé sécurisé
 * Utilisation d’un fichier `.gitignore` pour exclure :
 
-  * données du registry (`registry-data/`)
-  * fichiers sensibles (`auth/htpasswd`)
+  * les données du registry (`registry-data/`)
+  * les fichiers sensibles (`auth/htpasswd`)
 
 ---
 
 ## Technologies utilisées
 
-| Domaine          | Outils / Technologies |
-| ---------------- | --------------------- |
-| Conteneurisation | Docker                |
-| Orchestration    | Docker Compose        |
-| Backend          | Python                |
-| Frontend         | PHP (Apache)          |
-| Registry         | Docker Registry       |
-| Environnement    | Linux / Vagrant       |
+| Domaine          | Technologies    |
+| ---------------- | --------------- |
+| Conteneurisation | Docker          |
+| Orchestration    | Docker Compose  |
+| Backend          | Python          |
+| Frontend         | PHP (Apache)    |
+| Registry         | Docker Registry |
+| Environnement    | Linux / Vagrant |
 
 ---
 
@@ -169,7 +159,7 @@ Ce projet permet de comprendre :
 * La création et l’utilisation d’images
 * L’orchestration avec Docker Compose
 * Le fonctionnement d’un registry Docker privé
-* Les bonnes pratiques de gestion de projet DevOps
+* Les bonnes pratiques DevOps
 
 ---
 
@@ -177,6 +167,7 @@ Ce projet permet de comprendre :
 
 Evane Lipou
 
-
-Tu veux upgrade ça ou c’est déjà bon pour toi ? 🚀
 ```
+
+---
+

@@ -25,31 +25,31 @@ Objectif : mettre en pratique les concepts DevOps (conteneurisation, orchestrati
 
 ## Architecture du projet
 
-mini-projet-docker/  
-├── simple_api/                  # API Python  
-├── website/                     # Application web PHP  
-├── docker-compose.yml           # Déploiement API + Web  
-├── docker-compose-registry.yml  # Registry Docker privé  
-├── .gitignore  
+    mini-projet-docker/
+    ├── simple_api/                  # API Python
+    ├── website/                     # Application web PHP
+    ├── docker-compose.yml           # Déploiement API + Web
+    ├── docker-compose-registry.yml  # Registry Docker privé
+    ├── .gitignore
 
 ---
 
 ## Architecture globale
 
-              Navigateur  
-                  |  
-        -----------------------  
-        |                     |  
-   Web (PHP)           API (Python)  
-   (port 80)           (port 5000)  
-        |                     |  
-        -------- Docker Network --------  
-                       |  
-               Docker Registry  
-                  (privé)  
-                       |  
-                 Registry UI  
-                  (port 8080)  
+    Navigateur
+        |
+    -----------------------
+    |                     |
+    Web (PHP)        API (Python)
+    (port 80)        (port 5000)
+        |                     |
+        -------- Docker Network --------
+                       |
+               Docker Registry
+                  (privé)
+                       |
+                 Registry UI
+                  (port 8080)
 
 ---
 
@@ -68,7 +68,7 @@ mini-projet-docker/
 
 ### 1. Lancer les services applicatifs
 
-docker compose up -d
+    docker compose up -d
 
 Accès :
 - Web : http://localhost
@@ -78,7 +78,7 @@ Accès :
 
 ### 2. Lancer le registry Docker
 
-docker compose -f docker-compose-registry.yml up -d
+    docker compose -f docker-compose-registry.yml up -d
 
 Accès :
 - Registry : http://localhost:5000
@@ -97,7 +97,7 @@ Le registry est protégé par authentification basique.
 
 Connexion :
 
-docker login http://localhost:5000
+    docker login http://localhost:5000
 
 ---
 
@@ -105,11 +105,11 @@ docker login http://localhost:5000
 
 ### Tag d'une image
 
-docker tag api:v1.0 localhost:5000/api:v1.0
+    docker tag api:v1.0 localhost:5000/api:v1.0
 
 ### Push vers le registry
 
-docker push localhost:5000/api:v1.0
+    docker push localhost:5000/api:v1.0
 
 ---
 
